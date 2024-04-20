@@ -1,4 +1,100 @@
 body{
     margin: 0px;
     padding: 0px;
+    max-width: 375px;
+    font-family:Inter;
+    font-weight: 400;
+    font-size: 16px;
+    color: #5E6E85;
+}
+.logo{
+   text-align: center;
+   background: linear-gradient(to bottom right, #FFFFFF, #D6FCFE, #D6E6FE);
+   border-radius: 0 0 30px 30px;
+   padding-left: 24px;
+   padding-right: 24px;
+}
+.logo_title{
+font-size: 60px;
+font-weight: 600;
+color: #253347;
+}
+.logo_text{
+    padding-bottom: 144px;
+}
+.result{
+}
+.result_photo{
+    width: 375px;
+}
+.result_title{
+    font-weight: 600;
+    color: #253347;
+    font-size: 32px;
+    padding-top: 15px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.result_text{
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 50px;
+}
+.icons{
+    background: linear-gradient(to bottom right, #FFFFFF, #D6FCFE, #D6E6FE);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.icons_icon{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.icons_title{
+    font-weight: 600;
+    color: #253347;
+    font-size: 22px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.icons_text{
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.bmi{
+    text-align: center;
+    padding-top: 70px;
+}
+.bmi_title{
+    padding-bottom: 15px;
+    font-weight: 600;
+    color: #253347;
+    font-size: 32px;
+}
+.bmi_text{
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 25px;
+}
+.collection{
+    text-align: left;
+    list-style: none;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+.element{
+    width: 327px;
+    box-shadow: 8px 8px 20px 5px #ADD8E6;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+.element_part{
+    display: flex;
+    gap: 15px;
+}
+.element_icon{}
+.element_title{}
+.element_text{
+    padding-bottom: 25px;
 }
