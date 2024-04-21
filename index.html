@@ -13,52 +13,48 @@
 <body>
 <header>
   <div class="logo">
-<img class="logo_photo" src="./images/logo.svg">
-<h1 class="logo_title">Body Mass Index Calculator</h1>
-<p class="logo_text">Better understand your weight in relation to your height using our body mass index (BM) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.</p>
-</div>
-<div>
-  <button id="metricBtn">Metric</button>
-  <button id="imperialBtn">Imperial</button>
-</div>
-<div id="metricForm" style="display:none;">
-  <form id="bmiCalculator">
-    <h3>Enter your details below</h3>
-    <label for="weight">Weight:</label>
-    <input type="number" id="weight" name="weight" placeholder="Weight (kg)" required>
-    <label for="height">Height:</label>
-    <input type="number" id="height" name="height" placeholder="Height (cm)" required>
-    <button type="submit">Calculate BMI</button>
+    <img class="logo_photo" src="./images/logo.svg">
+    <h1 class="logo_title">Body Mass Index Calculator</h1>
+    <p class="logo_text">Better understand your weight in relation to your height using our body mass index (BMI) calculator. While BMI is not the sole determinant of a healthy weight, it offers a valuable starting point to evaluate your overall health and well-being.</p>
+  </div>
+  <form class="bmi_form">
+    <h2 class="form_title">Enter your details below</h2>
+    <div class="unit_selection">
+      <label>
+        <input type="radio" name="units" value="metric" checked>
+        Metric
+      </label>
+      <label>
+        <input type="radio" name="units" value="imperial">
+        Imperial
+      </label>
+    </div>
+    <div class="input_group">
+      <p>Height</p>
+      <input type="number" class="height_input" placeholder="Height">
+      <p>Weight</p>
+      <input type="number" class="weight_input" placeholder="Weight">
+    </div>
+    <div class="welcome_message">
+      <h3 class="welcome_message_title">Welcome!</h3>
+      <p class="welcome_message_text">Enter your height and weight and you will see your BMI result here.</p>
+    </div>
   </form>
-</div>
-<div id="imperialForm" style="display:none;">
-  <form id="bmiCalculator">
-    <h3>Enter your details below</h3>
-    <label for="feet">Height:</label>
-    <input type="number" id="feet" name="feet" placeholder="Feet" required>
-    <input type="number" id="inches" name="inches" placeholder="Inches" required>
-    <label for="stone">Weight:</label>
-    <input type="number" id="stone" name="stone" placeholder="Stone" required>
-    <input type="number" id="pounds" name="pounds" placeholder="Pounds" required>
-    <button type="submit">Calculate BMI</button>
-  </form>
-</div>
-<div id="bmiResult"></div>
 </header>
 <div class="result">
   <img class="result_photo" src="./images/image-man-eating.webp">
   <h2 class="result_title">What your BMI result means</h2>
   <p class="result_text">A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining a healthy weight may lower your chances of experiencing health issues later on, such as obesity and type 2 diabetes. Aim for a nutritious diet with reduced fat and sugar content, incorporating ample fruits and vegetables. Additionally, strive for regular physical activity, ideally about 30 minutes daily for five days a week.</p>
   <div class="icons">
-  <img class="icons_icon" src="./images/icon-eating.svg">
-  <h3 class="icons_title">Healthy eating</h3>
-  <p class="icons_text">Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</p>
-  <img class="icons_icon" src="./images/icon-exercise.svg">
-  <h3 class="icons_title">Regular exercise</h3>
-  <p class="icons_text">Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</p>
-  <img class="icons_icon" src="./images/icon-sleep.svg">
-  <h3 class="icons_title">Adequate sleep</h3>
-  <p class="icons_text">Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</p>
+    <img class="icons_icon" src="./images/icon-eating.svg">
+    <h3 class="icons_title">Healthy eating</h3>
+    <p class="icons_text">Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.</p>
+    <img class="icons_icon" src="./images/icon-exercise.svg">
+    <h3 class="icons_title">Regular exercise</h3>
+    <p class="icons_text">Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.</p>
+    <img class="icons_icon" src="./images/icon-sleep.svg">
+    <h3 class="icons_title">Adequate sleep</h3>
+    <p class="icons_text">Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.</p>
   </div>
 </div>
 <div class="bmi">
@@ -91,7 +87,7 @@
      <img class="element_icon" src="./images/icon-pregnancy.svg">
      <h4 class="element_title">Pregnancy</h4>
     </div>
-    <p class="element_text">Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimise health risks for both mother and child.</p>
+    <p class="element_text">Expectant mothers experience weight gain due to their growing baby. Maintaining a healthy pre-pregnancy BMI is advisable to minimize health risks for both mother and child.</p>
  </li>
  <li class="element">
   <div class="element_part">

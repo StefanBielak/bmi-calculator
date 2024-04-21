@@ -1,50 +1,54 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const metricBtn = document.getElementById('metricBtn');
-    const imperialBtn = document.getElementById('imperialBtn');
-    const metricForm = document.getElementById('metricForm');
-    const imperialForm = document.getElementById('imperialForm');
+document.addEventListener("DOMContentLoaded", function() {
+    // Pobierz elementy formularza i powitalnego komunikatu
+    const form = document.querySelector('.bmi_form');
+    const weightInput = document.querySelector('.weight_input');
+    const heightInput = document.querySelector('.height_input');
+    const welcomeMessage = document.querySelector('.welcome_message');
+    const unitSelection = document.querySelector('.unit_selection');
   
-    metricBtn.addEventListener('click', function() {
-      metricForm.style.display = 'block';
-      imperialForm.style.display = 'none';
-    });
+    // Nasłuchuj zmian w formularzu
+    form.addEventListener('input', function() {
+      // Pobierz wartości z pól formularza
+      const weight = parseFloat(weightInput.value);
+      const height = parseFloat(heightInput.value);
+      const units = document.querySelector('input[name="units"]:checked').value;
   
-    imperialBtn.addEventListener('click', function() {
-      metricForm.style.display = 'none';
-      imperialForm.style.display = 'block';
-    });
-  
-    document.getElementById('bmiCalculator').addEventListener('submit', function(event) {
-      event.preventDefault(); 
-  
-      let weight, height;
-  
-      if (metricForm.style.display === 'block') {
-        height = parseFloat(document.getElementById('height').value);
-        weight = parseFloat(document.getElementById('weight').value);
+      if (!isNaN(weight) && !isNaN(height)) {
+        // Jeśli oba pola są wypełnione, oblicz BMI
+        const bmi = calculateBMI(weight, height, units);
+        // Wyświetl wynik BMI
+        welcomeMessage.innerHTML = `
+          <h3>Your BMI</h3>
+          <p>Your BMI is: ${bmi.toFixed(2)}</p>
+        `;
       } else {
-        const feet = parseFloat(document.getElementById('feet').value);
-        const inches = parseFloat(document.getElementById('inches').value);
-        const stone = parseFloat(document.getElementById('stone').value);
-        const pounds = parseFloat(document.getElementById('pounds').value);
-  
-        height = (feet * 30.48) + (inches * 2.54);
-        weight = (stone * 6.35029) + (pounds * 0.453592);
-      }
-  
-      const bmi = weight / ((height / 100) * (height / 100));
-  
-      const resultDiv = document.getElementById('bmiResult');
-      resultDiv.innerHTML = '<h2>Your BMI</h2><p>Your BMI is: ' + bmi.toFixed(2) + '</p>';
-  
-      if (bmi < 18.5) {
-        resultDiv.innerHTML += '<p>You are underweight.</p>';
-      } else if (bmi >= 18.5 && bmi < 25) {
-        resultDiv.innerHTML += '<p>You are within a healthy weight range.</p>';
-      } else if (bmi >= 25 && bmi < 30) {
-        resultDiv.innerHTML += '<p>You are overweight.</p>';
-      } else {
-        resultDiv.innerHTML += '<p>You are obese.</p>';
+        // Jeśli niektóre pola nie są wypełnione, wyświetl standardowy komunikat powitalny
+        welcomeMessage.innerHTML = `
+          <h3>Welcome!</h3>
+          <p>Enter your height and weight and you will see your BMI result here.</p>
+        `;
       }
     });
+  
+    // Dodaj nasłuchiwanie zmian w opcjach wyboru jednostek
+    unitSelection.addEventListener('change', function() {
+      // Aktualizuj komunikat powitalny po zmianie jednostek
+      welcomeMessage.innerHTML = `
+        <h3>Welcome!</h3>
+        <p>Enter your height and weight and you will see your BMI result here.</p>
+      `;
+    });
+  
+    // Funkcja do obliczania BMI
+    function calculateBMI(weight, height, units) {
+      if (units === 'metric') {
+        // Oblicz BMI dla jednostek metrycznych
+        return weight / Math.pow(height, 2);
+      } else {
+        // Przekonwertuj wzrost na metry, jeśli jednostki imperialne
+        const heightInMeters = height * 0.0254;
+        // Oblicz BMI dla jednostek imperialnych
+        return (weight / Math.pow(heightInMeters, 2)) * 703;
+      }
+    }
   });
