@@ -30,10 +30,14 @@
       </label>
     </div>
     <div class="input_group">
-      <p>Height</p>
-      <input type="number" class="height_input" placeholder="Height">
-      <p>Weight</p>
-      <input type="number" class="weight_input" placeholder="Weight">
+      <p class="weight_title">Weight</p>
+<input type="number" class="weight_input metric" placeholder="kg" data-unit="metric">
+<input type="number" class="weight_input imperial" placeholder="oz" data-unit="imperial" style="display: none;">
+<input type="number" class="weight_input imperial" placeholder="lb" data-unit="imperial" style="display: none;">
+<p class="height_title">Height</p>
+<input type="number" class="height_input metric" placeholder="cm" data-unit="metric">
+<input type="number" class="height_input imperial" placeholder="ft" data-unit="imperial" style="display: none;">
+<input type="number" class="height_input imperial" placeholder="in" data-unit="imperial" style="display: none;">
     </div>
     <div class="welcome_message">
       <h3 class="welcome_message_title">Welcome!</h3>
