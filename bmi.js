@@ -33,39 +33,63 @@ document.addEventListener("DOMContentLoaded", function() {
         if (units === 'metric') {
             return weight / Math.pow(height / 100, 2);
         } else {
-            const weightInKg = weight * 0.0283495;
-            const feet = heightInputs[1].value;
-            const inches = heightInputs[2].value;
-            const heightInMeters = ((feet * 12) + inches) * 0.0254;
-            return weightInKg / Math.pow(heightInMeters, 2);
+            const weightInPounds = weight;
+            let feet, inches;
+            if (heightInputs.length === 3) {
+                feet = heightInputs[1].valueAsNumber;
+                inches = heightInputs[2].valueAsNumber;
+            } else {
+                feet = heightInputs[0].valueAsNumber;
+                inches = heightInputs[1].valueAsNumber;
+            }
+            const heightInInches = (feet * 12) + inches;
+            return (weightInPounds / Math.pow(heightInInches, 2)) * 703;
         }
     }
 
-    // Function to determine weight range for given height
-    function weightRange(height, units) {
-        let weightRangeMetric, weightRangeImperial;
+    // Function to determine weight range for given height (metric)
+    function weightRangeMetric(height) {
+        if (height < 150) {
+            return "40-55";
+        } else if (height >= 150 && height < 160) {
+            return "56-64";
+        } else if (height >= 160 && height < 165) {
+            return "54-68";
+        } else if (height >= 165 && height < 170) {
+            return "57-72";
+        } else if (height >= 170 && height < 175) {
+            return "61-76";
+        } else if (height >= 175 && height < 180) {
+            return "63-81";
+        } else if (height >= 180 && height < 185) {
+            return "67-85";
+        } else if (height >= 185 && height < 220) {
+            return "78-100";
+        } 
+    }
 
-        if (units === 'metric') {
-            if (height < 150) {
-                weightRangeMetric = "40-55";
-            } else if (height >= 150 && height < 160) {
-                weightRangeMetric = "56-64";
-            } else if (height >= 160 && height < 165) {
-                weightRangeMetric = "54-68";
-            } else if (height >= 165 && height < 170) {
-                weightRangeMetric = "57-72";
-            } else if (height >= 170 && height < 175) {
-                weightRangeMetric = "61-76";
-            } else if (height >= 175 && height < 180) {
-                weightRangeMetric = "63-81";
-            } else if (height >= 180 && height < 185) {
-                weightRangeMetric = "67-85";
-            } else if (height >= 185 && height < 220) {
-                weightRangeMetric = "78-100";
-            } 
-            return weightRangeMetric;
+    // Function to determine weight range for given height (imperial)
+    function weightRangeImperial(height) {
+        if (height < 59) {
+            return "6-8";
+        } else if (height >= 59 && height < 63) {
+            return "8-10";
+        } else if (height >= 63 && height < 65) {
+            return "9-11";
+        } else if (height >= 65 && height < 67) {
+            return "10-12";
+        } else if (height >= 67 && height < 69) {
+            return "11-13";
+        } else if (height >= 69 && height < 71) {
+            return "12-14";
+        } else if (height >= 71 && height < 73) {
+            return "13-15";
+        } else if (height >= 73 && height < 78) {
+            return "14-16";
+        } else if (height >= 78 && height < 80) {
+            return "15-17";
         } else {
-            // Add weight range calculation for imperial units
+            return "16+";
         }
     }
 
@@ -97,26 +121,35 @@ document.addEventListener("DOMContentLoaded", function() {
         const height = parseFloat(heightInputs[0].value);
         const units = document.querySelector('input[name="units"]:checked').value;
 
-        if (!isNaN(weight) && !isNaN(height)) {
+        // Check if both weight and height are entered
+        if (!isNaN(weight) && !isNaN(height) && weight > 0 && height > 0) {
             // Calculate BMI
             const bmi = calculateBMI(weight, height, units);
 
             // Determine weight range for given height
-            const weightRangeInfo = weightRange(height, units);
+            let weightRangeInfo;
+            if (units === 'metric') {
+                weightRangeInfo = weightRangeMetric(height);
+            } else {
+                weightRangeInfo = weightRangeImperial(height);
+            }
 
             // Determine BMI category
             const bmiCategoryInfo = bmiCategory(bmi);
 
             // Display BMI result
             welcomeMessage.innerHTML = `
-                <h3 class="welcome_message_title">Your BMI is ${bmi.toFixed(2)}</h3>
-                <p class="welcome_message_text">Your BMI falls within the ${bmiCategoryInfo} category. For your height, a weight range of ${weightRangeInfo} ${units === 'metric' ? 'kg' : 'lb'} would result in a healthy BMI.</p>
+                <div>
+                <h3 class="result_message_title">Your BMI is...</h3>
+                <p class="result_bmi">${bmi.toFixed(2)}</p>
+                </div>
+                <p class="result_message_text">Your BMI falls within the ${bmiCategoryInfo} category. For your height, a weight range of ${weightRangeInfo} ${units === 'metric' ? 'kg' : 'st'} would result in a healthy BMI.</p>
             `;
         } else {
-            // If some fields are not filled, display standard welcome message
+            // If some fields are not filled or contain invalid values, display standard welcome message
             welcomeMessage.innerHTML = `
                 <h3 class="welcome_message_title">Welcome!</h3>
-                <p class="welcome_message_text">Enter your height and weight and you will see your BMI result here.</p>
+                <p class="welcome_message_text">Enter valid height and weight to see your BMI result here.</p>
             `;
         }
     });
@@ -128,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update welcome message after changing units
         welcomeMessage.innerHTML = `
             <h3 class="welcome_message_title">Welcome!</h3>
-            <p class="welcome_message_text">Enter your height and weight and you will see your BMI result here.</p>
+            <p class="welcome_message_text">Enter valid height and weight to see your BMI result here.</p>
         `;
     });
 

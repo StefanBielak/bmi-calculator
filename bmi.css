@@ -87,6 +87,14 @@ color: #253347;
     padding-right: 20px;
     margin-bottom: 20px;
 }
+.element_last{
+    width: 320px;
+    box-shadow: 8px 8px 20px 5px #ADD8E6;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
 .element_part{
     display: flex;
     gap: 15px;
@@ -180,4 +188,98 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 ::placeholder {
     color: #345FF6;
+}
+.result_message_title{
+    font-weight: 400;
+    font-size: 18px;
+    padding-top: 15px;
+    padding-left: 30px;
+    color: #FFFFFF;
+}
+.result_message_text{
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FFFFFF;
+}
+.result_bmi{
+    font-size: 32px;
+    font-weight: 600;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+@media screen and (min-width: 376px){
+    body{
+        max-width: 768px;
+    }
+    .logo{
+        padding-top: 30px;
+    }
+    .logo_title{
+      padding-left: 120px;
+      padding-right: 120px;
+    }
+    .bmi_form{
+        text-align:left;
+        width: 720px;
+    }
+    .form_title{
+        padding-left: 30px;
+    }
+    .unit_selection{
+        justify-content:left;
+        gap: 240px;
+    }
+    .input_group{
+        display: flex;
+        padding-left: 30px;
+        gap:30px
+    }
+    .weight_title{
+        padding-left: 0px;
+    }
+    .height_title{
+        padding-left: 0px; 
+    }
+    .welcome_message{
+        border-radius: 10px;
+        max-width: 622px;
+        border-top-right-radius: 60px;
+        border-bottom-right-radius: 60px;
+        display: flex;
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+    .welcome_message_title{
+        padding-top: 0px;
+    }
+    .welcome_message_text{
+        padding-top: 13px;
+    }
+    .result_message_text{
+        padding-top: 20px;
+    }
+    .result_content{
+        display: flex;
+    }
+    .result_photo{
+        width: 375px;
+        padding-bottom: 60px;
+    }
+    .icons_elements{
+        display: flex;
+    }
+    .collection{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+        padding-left: 15px;
+    }
+    .element_last{
+        position: relative;
+        left: 190px;
+    }
 }
