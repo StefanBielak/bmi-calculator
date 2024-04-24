@@ -6,6 +6,7 @@ body{
     font-weight: 400;
     font-size: 16px;
     color: #5E6E85;
+    height: 0px;
 }
 .logo{
    text-align: center;
@@ -21,6 +22,16 @@ color: #253347;
 }
 .logo_text{
     padding-bottom: 170px;
+}
+.result_line{
+    visibility: hidden;
+}
+.bmi_line{
+    visibility: hidden;
+}
+.result{
+    position: relative;
+    top: -200px;
 }
 .result_photo{
     width: 375px;
@@ -59,8 +70,9 @@ color: #253347;
     padding-right: 24px;
 }
 .bmi{
+    position: relative;
     text-align: center;
-    padding-top: 70px;
+    top: -200px;
 }
 .bmi_title{
     padding-bottom: 15px;
@@ -214,6 +226,7 @@ input[type="number"]::-webkit-outer-spin-button {
 @media screen and (min-width: 376px){
     body{
         max-width: 768px;
+        height: 0px;
     }
     .logo{
         padding-top: 30px;
@@ -259,6 +272,10 @@ input[type="number"]::-webkit-outer-spin-button {
     .welcome_message_text{
         padding-top: 13px;
     }
+    .result {
+        position: relative;
+        top: -150px;
+    }
     .result_message_text{
         padding-top: 20px;
     }
@@ -281,5 +298,133 @@ input[type="number"]::-webkit-outer-spin-button {
     .element_last{
         position: relative;
         left: 190px;
+    }
+    .bmi{
+        position: relative;
+        top: -250px;
+    }
+}
+@media screen and (min-width: 769px){
+    body{
+        height: 0px;
+    }
+    .logo{
+        margin-left: 20px;
+        text-align: left;
+        width: 870px;
+    }
+    .logo_photo{
+        padding-top: 40px;
+        padding-left: 30px;
+    }
+    .logo_title{
+        padding-left: 30px;
+        width: 480px;
+        padding-top: 50px;
+    }
+    .logo_text{
+        padding-left: 32px;
+        width: 480px;
+    }
+    .bmi_form{
+        width: 464px;
+        top: -530px;
+        left: 700px;
+    }
+    .unit_selection{
+        justify-content:left;
+        gap: 140px;
+    }
+    .input_group{
+        display: flex;
+        padding-left: 30px;
+        gap:30px
+    }
+    .metric{
+        width: 170px;
+    }
+    .welcome_message{
+        max-width: 400px;
+    }
+    .result_content{
+        position: relative;
+        top: -500px;
+        padding-left: 140px;
+        padding-bottom: 0px;
+        gap: 140px;
+    }
+    .result_info{
+        position: relative;
+        top: 80px;
+    }
+    .result_text{
+        width: 465px;
+    }
+    .icons{
+        width: 1255px;
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 90px;
+        display: flex;
+        position: relative;
+        top: -450px;
+        gap: 40px;
+    }
+    .icons_elements{
+        display: flex;
+        flex-direction: column;
+        width: 365px;
+    }
+    .icons_icon{
+        width: 64px;
+    }
+    .bmi{
+        position: relative;
+        top: -600px;
+    }
+    .bmi_info{
+        width: 564px;
+        padding-left: 100px;
+    }
+    .element:nth-of-type(1){
+        position: relative;
+        top: -190px;
+        left: 800px;
+    }
+    .element:nth-of-type(2){
+        position: relative;
+        top: 100px;
+        left: 100px;
+    }
+    .element:nth-of-type(3){
+        position: relative;
+        top: -161px;
+        left: 910px;
+    }
+    .element:nth-of-type(4){
+        position: relative;
+        top: 130px;
+        left: -120px;
+    }
+    .element_last{
+        position: relative;
+        top: -130px;
+        left: 700px;
+        margin-bottom: 0px;
+    }
+    .result_line{
+        position: relative;
+        visibility: visible;
+        top: -450px;
+        left: 1050px;
+    }
+    .bmi_line{
+        position: relative;
+        visibility: visible;
+        top: -140px;
+        left: 250px;
+    }
+    .result{
+        padding-top: 120px;
     }
 }
